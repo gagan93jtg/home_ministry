@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Food journals</h1>
+
+<div id="food_journals">
+  <% @food_journals.each do |food_journal| %>
+    <%= render food_journal %>
+    <p>
+      <%= link_to "Show this food journal", food_journal %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New food journal", new_food_journal_path %>

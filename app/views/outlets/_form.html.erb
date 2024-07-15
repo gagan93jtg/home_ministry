@@ -1,0 +1,27 @@
+<%= form_with(model: outlet) do |form| %>
+  <% if outlet.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(outlet.errors.count, "error") %> prohibited this outlet from being saved:</h2>
+
+      <ul>
+        <% outlet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label", for: :name %>
+    <%= form.text_field :name, id: :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :location, class: "form-label", for: :location %>
+    <%= form.text_field :location, id: :location, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit(class: "btn btn-primary") %>
+  </div>
+<% end %>

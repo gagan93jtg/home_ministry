@@ -1,0 +1,32 @@
+
+<%= form_with(model: food_journal) do |form| %>
+  <% if food_journal.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(food_journal.errors.count, "error") %> prohibited this food_journal from being saved:</h2>
+
+      <ul>
+        <% food_journal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :date, class: 'form-label', for: :date %>
+    <%= form.date_field :date, id: :date, class: 'form-control date date-picker' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :time, class: 'form-label', for: :time %>
+    <%= form.select :time, FoodJournal.times.map { |k, v| [k.capitalize, k] }, {}, id: :time, class: 'form-control'  %>
+  </div>
+
+  <div>
+    <%= form.submit(class: 'btn btn-primary') %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $("#date").flatpickr();
+</script>

@@ -1,0 +1,11 @@
+<%
+  html_class = "table-success" if outlet.id == params[:highlight].to_i
+%>
+<tr id="<%= dom_id outlet %>" scope="row" class="<%= html_class %>">
+  <td><%= outlet.id %></td>
+  <td><%= outlet.name %></td>
+  <td><%= outlet.location %></td>
+  <td><%= outlet.last_ordered_at %></td>
+  <td><%= link_to "Edit", edit_outlet_path(outlet) %></td>
+
+</tr>

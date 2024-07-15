@@ -1,0 +1,25 @@
+<% if notice.present? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
+
+
+<h1>Outlets</h1>
+
+<div id="outlets">
+  <table class="table table-striped table-hover">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Location</th>
+      <th scope="col">Last Ordered At</th>
+      <th scope="col">Actions</th>
+    </tr>
+    <% @outlets.each do |outlet| %>
+      <%= render outlet %>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to "New outlet", new_outlet_path %>
