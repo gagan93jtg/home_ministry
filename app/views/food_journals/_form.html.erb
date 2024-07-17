@@ -22,6 +22,11 @@
     <%= form.select :time, FoodJournal.times.map { |k, v| [k.capitalize, k] }, {}, id: :time, class: 'form-control'  %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :dishes, class: 'form-label', for: :dishes %>
+    <%= form.select :dish_ids, ::Dish.all.includes(:outlet).map { |d| [d.view_name, d.id] }, {}, id: :dish_ids, class: 'form-control', multiple: true  %>
+  </div>
+
   <div>
     <%= form.submit(class: 'btn btn-primary') %>
   </div>
@@ -29,4 +34,7 @@
 
 <script type="text/javascript">
   $("#date").flatpickr();
+  $('#dish_ids').select2( {
+    theme: 'bootstrap-5',
+  });
 </script>

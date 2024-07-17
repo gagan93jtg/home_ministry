@@ -1,12 +1,11 @@
-<div id="<%= dom_id food_journal %>">
-  <p>
-    <strong>Date:</strong>
-    <%= food_journal.date %>
-  </p>
+<%
+  html_class = "table-success" if food_journal.id == params[:highlight].to_i
+%>
 
-  <p>
-    <strong>Time:</strong>
-    <%= food_journal.time %>
-  </p>
+<tr id="<%= dom_id food_journal %>" scope="row" class="<%= html_class %>">
+  <td><%= food_journal.date %></td>
+  <td><i class="fa-solid fs-20 va-top <%= food_journal_time_icon(food_journal) %> me-2"></i><%= food_journal.time.capitalize %></td>
+  <td><%= food_journal.dishes.map(&:view_name).join("<br>").html_safe %></td>
+  <td><%= link_to "Edit", edit_food_journal_path(food_journal) %></td>
 
-</div>
+</tr>
