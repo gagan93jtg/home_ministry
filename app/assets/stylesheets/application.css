@@ -26,3 +26,7 @@
 .va-top {
   vertical-align: top;
 }
+
+.highcharts-credits {
+  display: none;
+}

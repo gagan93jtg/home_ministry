@@ -14,4 +14,12 @@ class FoodJournal < ApplicationRecord
   has_many :dishes, through: :dishes_food_journals
 
   validates_uniqueness_of :date, scope: [:time], message: "One entry per time"
+
+  after_commit :update_outlet_last_ordered
+
+  private def update_outlet_last_ordered
+    dishes.each do |dish|
+      dish.outlet.update!(last_ordered_at: date)
+    end
+  end
 end
