@@ -1,5 +1,5 @@
 class FoodJournal < ApplicationRecord
-  DEFAULT_RECENTLY = 10.days
+  DEFAULT_RECENTLY = 7.days
 
   enum time: {
     breakfast: 0,
@@ -8,7 +8,7 @@ class FoodJournal < ApplicationRecord
     dinner: 3,
   }
 
-  scope :recent, -> { where("date > ?", DEFAULT_RECENTLY.ago) }
+  scope :recent, -> { where("date > ?", DEFAULT_RECENTLY.ago.beginning_of_day) }
 
   has_many :dishes_food_journals, dependent: :destroy
   has_many :dishes, through: :dishes_food_journals

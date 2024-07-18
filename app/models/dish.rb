@@ -16,6 +16,8 @@ class Dish < ApplicationRecord
     bread: 11,
     fruits: 12,
     maida: 13,
+    makhana: 14,
+    nonveg: 15,
   }
 
   enum season: {
@@ -29,7 +31,11 @@ class Dish < ApplicationRecord
 
   validates_presence_of :name, :family
 
-  def view_name
-    "#{name} [#{outlet.name}]"
+  def formatted_family
+    self.class.formatted_family(family)
+  end
+
+  def self.formatted_family(family)
+    family.split('_').map { |x| x.capitalize }.join(" or ")
   end
 end

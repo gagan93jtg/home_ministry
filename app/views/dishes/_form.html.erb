@@ -19,7 +19,7 @@
   <div class="mb-3">
     <%= form.label :family, class: "form-label", for: "dish_family" %>
     <%= form.select :family,
-      Dish.families.map { |k, v| [k.split('_').join(' or ').capitalize, k] }, { include_blank: true }, class: 'form-control'  %>
+      Dish.families.map { |k, v| [Dish.formatted_family(k), k] }, { include_blank: true }, class: 'form-control'  %>
   </div>
 
   <div class="mb-3">
@@ -29,7 +29,7 @@
 
   <div class="mb-3">
     <%= form.label :outlet_id, class: "form-label", for: "dish_outlet" %>
-    <%= form.select :outlet_id, Outlet.all.map { |outlet| [outlet.name, outlet.id] }, {}, class: "form-control"%>
+    <%= form.select :outlet_id, Outlet.order(id: :asc).map { |outlet| [outlet.name, outlet.id] }, {}, class: "form-control"%>
   </div>
 
   <div>

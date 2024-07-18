@@ -5,7 +5,15 @@
 <tr id="<%= dom_id food_journal %>" scope="row" class="<%= html_class %>">
   <td><%= food_journal.date %></td>
   <td><i class="fa-solid fs-20 va-top <%= food_journal_time_icon(food_journal) %> me-2"></i><%= food_journal.time.capitalize %></td>
-  <td><%= food_journal.dishes.map(&:view_name).join("<br>").html_safe %></td>
+  <td>
+    <% food_journal.dishes.includes(:outlet).each do |dish| %>
+      <div class="mt-2 mb-2">
+        <b>Name:</b> <%= dish.name %><br>
+        <b>Family:</b> <%= dish.formatted_family %><br>
+        <b>Outlet:</b> <%= dish.outlet.name %><br>
+      </div>
+    <% end %>
+  </td>
   <td><%= link_to "Edit", edit_food_journal_path(food_journal) %></td>
 
 </tr>

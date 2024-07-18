@@ -30,3 +30,11 @@
 .highcharts-credits {
   display: none;
 }
+
+#dashboard_container {
+  background: #EEE;
+}
+
+table {
+  background: white;
+}

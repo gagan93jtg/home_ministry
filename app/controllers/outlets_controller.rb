@@ -3,7 +3,7 @@ class OutletsController < ApplicationController
 
   # GET /outlets or /outlets.json
   def index
-    @outlets = Outlet.all
+    @outlets = Outlet.all.order("last_ordered_at DESC NULLS LAST")
   end
 
   # GET /outlets/1 or /outlets/1.json

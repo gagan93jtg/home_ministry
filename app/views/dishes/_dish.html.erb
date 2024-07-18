@@ -5,7 +5,7 @@
 <tr id="<%= dom_id dish %>" scope="row" class="<%= html_class %>">
   <td><%= dish.id %></td>
   <td><%= dish.name %></td>
-  <td><%= dish.family %></td>
+  <td><%= dish.formatted_family %></td>
   <td><%= dish.season %></td>
   <td><%= dish.outlet.name %></td>
   <td><%= link_to "Edit", edit_dish_path(dish) %></td>
