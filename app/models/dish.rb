@@ -31,6 +31,10 @@ class Dish < ApplicationRecord
 
   validates_presence_of :name, :family
 
+  def view_name
+    "#{name} [#{outlet.name}]"
+  end
+
   def formatted_family
     self.class.formatted_family(family)
   end
