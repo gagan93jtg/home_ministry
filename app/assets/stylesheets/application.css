@@ -38,3 +38,8 @@
 table {
   background: white;
 }
+
+.table_container {
+  background: white;
+  padding: 2em;
+}

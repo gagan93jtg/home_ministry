@@ -27,6 +27,14 @@ module DashboardHelper
     Dish.where.not(family: families_to_ignore)
   end
 
+  def future_dishes
+    dish_dates = FoodJournal.recent.joins(:dishes).group('dishes.family').order(1).maximum('food_journals.date').
+      select { |k, v| v < 3.days.ago }
+    dish_dates.map do |k, v|
+      [Dish::formatted_family(k), (v + FoodJournal::DEFAULT_RECENCY).strftime(ApplicationHelper::INDIA_DATE_FORMAT)]
+    end
+  end
+
   private def chartify(data)
     data.each_with_object([]) do |(k, v), arr|
       arr << { name: k, y: v}

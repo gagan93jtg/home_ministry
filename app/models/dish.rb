@@ -16,8 +16,9 @@ class Dish < ApplicationRecord
     bread: 11,
     fruits: 12,
     maida: 13,
-    makhana: 14,
+    healthy: 14,
     nonveg: 15,
+    snacks_outside: 16,
   }
 
   enum season: {
